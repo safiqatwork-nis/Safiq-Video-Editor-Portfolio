@@ -78,6 +78,37 @@ h6 {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Collaborations / portfolio */
+.portfolio-container { position: relative; z-index: 10; }
+.portfolio-eyebrow, .card-type { color: var(--accent-cyan); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.17em; }
+.portfolio-eyebrow { display: block; margin-bottom: 0.8rem; }
+.portfolio-intro { max-width: 39rem; margin: 0 auto; }
+.portfolio-group + .portfolio-group { margin-top: 4.5rem; }
+.portfolio-group-heading { display: flex; align-items: baseline; gap: 0.85rem; margin-bottom: 1.35rem; }
+.portfolio-group-heading span { color: var(--accent-cyan); font-size: 0.8rem; letter-spacing: 0.12em; }
+.portfolio-group-heading h3 { font-size: clamp(1.4rem, 2vw, 1.85rem); }
+.collaboration-grid { display: grid; gap: 1rem; }
+.brand-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.creator-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.collaboration-card { position: relative; overflow: hidden; min-height: 238px; border: 1px solid rgba(255,255,255,0.09); border-radius: 16px; background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)); padding: 1.5rem; display: flex; flex-direction: column; box-shadow: 0 12px 30px rgba(0,0,0,0.14); }
+.collaboration-card::after { content: ''; position: absolute; inset: auto -20% -60% 40%; height: 170px; background: radial-gradient(circle, rgba(0,242,234,0.14), transparent 66%); pointer-events: none; }
+.collaboration-card h4 { color: #fff; font-size: 1.35rem; margin: 0.65rem 0 0.25rem; max-width: 14rem; }
+.card-number { position: absolute; right: 1.3rem; top: 1rem; color: rgba(255,255,255,0.17); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; }
+.card-country, .creator-platform { color: var(--text-secondary); font-size: 0.88rem; }
+.card-footer { margin-top: auto; position: relative; z-index: 1; }
+.card-footer > p { color: #b8b8b8; font-size: 0.82rem; line-height: 1.4; margin-bottom: 0.9rem; max-width: 12rem; }
+.portfolio-link { align-items: center; color: white; display: inline-flex; font-size: 0.87rem; font-weight: 600; gap: 0.45rem; text-decoration: none; transition: color .2s ease, gap .2s ease; }
+.portfolio-link svg:first-of-type { color: var(--accent-cyan); }
+.portfolio-link:hover { color: var(--accent-cyan); gap: 0.65rem; }
+.creator-card { min-height: 210px; }
+.creator-icon { color: var(--accent-cyan); font-size: 2.15rem; margin-bottom: 1.4rem; }
+.creator-card .portfolio-link { margin-top: auto; position: relative; z-index: 1; }
+.more-work-cta { align-items: center; background: linear-gradient(100deg, rgba(0,242,234,0.12), rgba(67,97,238,0.13)); border: 1px solid rgba(0,242,234,0.27); border-radius: 16px; color: white; display: grid; gap: 0.15rem; grid-template-columns: 1fr auto; margin: 4.5rem auto 0; max-width: 670px; padding: 1.3rem 1.5rem; text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+.more-work-cta:hover { border-color: var(--accent-cyan); transform: translateY(-3px); }
+.more-work-cta span { color: var(--text-secondary); font-size: .78rem; grid-column: 1; }
+.more-work-cta strong { font-size: 1rem; grid-column: 1; }
+.more-work-cta > svg { color: var(--accent-cyan); font-size: 1.3rem; grid-column: 2; grid-row: 1 / span 2; }
+
 .section-padding {
   padding: 6rem 1.5rem;
   /* Mobile first padding */

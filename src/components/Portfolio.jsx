@@ -1,139 +1,63 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { portfolio } from '../data';
-import { FaYoutube, FaInstagram, FaPlay } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaArrowRight, FaGoogleDrive, FaInstagram, FaYoutube } from 'react-icons/fa';
 
-const Portfolio = () => {
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: containerRef });
-    const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+const brands = [
+    { name: 'Ponvel Coco', country: 'Canada', work: 'Lead generation ad edit', url: 'https://drive.google.com/file/d/1lAVy3DOb1USj26-OyQtFoLQ7-uQWKnBr/view?usp=sharing' },
+    { name: 'Onstage', country: 'Germany', work: 'Test edit', url: 'https://drive.google.com/file/d/10No1hYxX8iJGft_uc8ZdcIW3xOOCy_Jo/view?usp=sharing' },
+    { name: 'Bayleaf', country: 'United States', work: 'Lead generation ad edit', url: 'https://drive.google.com/file/d/1K0lNvG7IqRoKJIief8xnp3Ki6dKOet32/view?usp=sharing' },
+    { name: 'The Design Code TVL', country: '', work: 'Lead generation ad edit', url: 'https://drive.google.com/file/d/15AowGlAgD6tzvSsBEbJpxsHl1DCm8XTv/view?usp=sharing' },
+    { name: 'Ambal', country: '', work: 'Lead generation ad edit', url: 'https://drive.google.com/file/d/14ZvytjT1soJpSNsYnwiFAUZOVM1VIshB/view?usp=sharing' },
+];
 
-    return (
-        <section id="portfolio" className="section-padding bg-bg-secondary relative" ref={containerRef}>
-            <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4 font-heading">
-                        Featured <span className="text-gradient">Projects</span>
-                    </h2>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
-                        A selection of my best work in video editing, motion graphics, and content creation.
-                    </p>
-                </motion.div>
+const creators = [
+    { name: 'Doctor Sheeba', platform: 'Instagram', icon: FaInstagram, url: 'https://www.instagram.com/drsheeba_dental_diary?utm_source=ig_web_button_share_sheet&dlrf=ZDNlZDc0MzIxNw==' },
+    { name: 'Engineering Facts', platform: 'YouTube', icon: FaYoutube, url: 'https://www.youtube.com/@engineeringfacts' },
+];
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                    {portfolio.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
-                            className="glass-card overflow-hidden group relative"
-                            style={{ borderRadius: '16px', overflow: 'hidden', height: '400px', display: 'flex', flexDirection: 'column', position: 'relative' }}
-                        >
-                            {/* Thumbnail Container */}
-                            <div style={{ height: '70%', background: '#202020', position: 'relative', overflow: 'hidden' }}>
-                                {project.thumbnail ? (
-                                    <img
-                                        src={project.url.includes('youtube.com/shorts/')
-                                            ? `https://img.youtube.com/vi/${project.url.split('/shorts/')[1].split('?')[0]}/hqdefault.jpg`
-                                            : project.thumbnail}
-                                        alt={project.title}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
-                                        className="group-hover:scale-110"
-                                        onMouseEnter={e => e.target.style.transform = 'scale(1.1)'}
-                                        onMouseLeave={e => e.target.style.transform = 'scale(1)'}
-                                    />
-                                ) : (
-                                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(45deg, #333, #111)' }}>
-                                        <FaInstagram style={{ fontSize: '3rem', color: '#E1306C' }} />
-                                    </div>
-                                )}
+const ExternalLink = ({ href, children, icon: Icon }) => (
+    <a className="portfolio-link" href={href} target="_blank" rel="noopener noreferrer">
+        {children} {Icon && <Icon />} <FaArrowRight />
+    </a>
+);
 
-                                {/* Overlay with Play Button */}
-                                <a
-                                    href={project.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        width: '100%',
-                                        height: '100%',
-                                        background: 'rgba(0,0,0,0.4)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        opacity: 0,
-                                        transition: 'opacity 0.3s'
-                                    }}
-                                    className="group-hover:opacity-100 hover:opacity-100"
-                                    onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-                                    onMouseLeave={e => e.currentTarget.style.opacity = '0'}
-                                >
-                                    <div style={{
-                                        width: '60px',
-                                        height: '60px',
-                                        borderRadius: '50%',
-                                        background: 'white',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        color: 'black',
-                                        fontSize: '1.5rem'
-                                    }}>
-                                        <FaPlay style={{ marginLeft: '4px' }} />
-                                    </div>
-                                </a>
-                            </div>
+const Portfolio = () => (
+    <section id="portfolio" className="section-padding bg-bg-secondary relative">
+        <div className="container portfolio-container">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+                <span className="portfolio-eyebrow">COLLABORATIONS</span>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 font-heading">Brands &amp; <span className="text-gradient">Creators</span></h2>
+                <p className="text-text-secondary portfolio-intro">A selection of brands and creators I have partnered with for high-performing video edits.</p>
+            </motion.div>
 
-                            {/* Content */}
-                            <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: 'rgba(255, 255, 255, 0.03)' }}>
-                                <div>
-                                    <span style={{
-                                        fontSize: '0.85rem',
-                                        fontWeight: '600',
-                                        textTransform: 'uppercase',
-                                        letterSpacing: '0.1em',
-                                        color: 'var(--accent-cyan)',
-                                        marginBottom: '0.5rem',
-                                        display: 'block'
-                                    }}>
-                                        {project.category}
-                                    </span>
-                                    <h3 className="text-xl font-bold mb-2" style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'white' }}>{project.title}</h3>
-                                </div>
-
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
-                                    <a href={project.url} target="_blank" rel="noopener noreferrer"
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: 'var(--text-secondary)',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem',
-                                            fontSize: '0.9rem',
-                                            transition: 'color 0.3s'
-                                        }}
-                                        onMouseOver={e => e.target.style.color = 'white'}
-                                        onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
-                                        Watch Video {project.url.includes('youtube') ? <FaYoutube style={{ color: '#FF0000' }} /> : <FaInstagram style={{ color: '#E1306C' }} />}
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
+            <div className="portfolio-group">
+                <div className="portfolio-group-heading"><span>01</span><h3>Brands</h3></div>
+                <div className="collaboration-grid brand-grid">
+                    {brands.map((brand, index) => (
+                        <motion.article key={brand.name} className="collaboration-card brand-card" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.06 }} whileHover={{ y: -6 }}>
+                            <div className="card-number">0{index + 1}</div><div><p className="card-type">BRAND COLLABORATION</p><h4>{brand.name}</h4>{brand.country && <p className="card-country">{brand.country}</p>}</div>
+                            <div className="card-footer"><p>{brand.work}</p><ExternalLink href={brand.url} icon={FaGoogleDrive}>View edit</ExternalLink></div>
+                        </motion.article>
                     ))}
                 </div>
             </div>
-        </section>
-    );
-};
+
+            <div className="portfolio-group creators-group">
+                <div className="portfolio-group-heading"><span>02</span><h3>Creators</h3></div>
+                <div className="collaboration-grid creator-grid">
+                    {creators.map((creator, index) => {
+                        const Icon = creator.icon;
+                        return <motion.article key={creator.name} className="collaboration-card creator-card" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -6 }}>
+                            <Icon className="creator-icon" /><p className="card-type">CONTENT CREATOR</p><h4>{creator.name}</h4><p className="creator-platform">{creator.platform}</p><ExternalLink href={creator.url} icon={Icon}>Visit {creator.platform}</ExternalLink>
+                        </motion.article>;
+                    })}
+                </div>
+            </div>
+
+            <motion.a className="more-work-cta" href="https://drive.google.com/drive/folders/1iv0cy--BnEZQ5z8IbsHSFnUJWjYVLkox?usp=sharing" target="_blank" rel="noopener noreferrer" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+                <span>Want to see more?</span><strong>Explore my complete edit library</strong><FaArrowRight />
+            </motion.a>
+        </div>
+    </section>
+);
 
 export default Portfolio;

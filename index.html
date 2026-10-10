@@ -359,6 +359,64 @@
             font-style: italic;
         }
 
+        /* Collaborations */
+        .collaboration-heading {
+            display: flex;
+            gap: 0.8rem;
+            align-items: baseline;
+            margin: 4.5rem 0 1.5rem;
+        }
+
+        .collaboration-heading span {
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .collaboration-heading h3 { font-size: 1.8rem; }
+
+        .collaboration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+        }
+
+        .creator-grid { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+
+        .collaboration-card {
+            min-height: 235px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 1.6rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 18px;
+            transition: transform .3s ease, border-color .3s ease;
+        }
+
+        .collaboration-card:hover { transform: translateY(-8px); border-color: rgba(0,242,234,0.45); }
+        .collaboration-card::after { content: ''; position: absolute; width: 180px; height: 180px; right: -65px; bottom: -85px; border-radius: 50%; background: radial-gradient(circle, rgba(0,242,234,0.16), transparent 68%); }
+        .card-number { position: absolute; top: 1.3rem; right: 1.4rem; color: rgba(255,255,255,0.2); font-size: 0.75rem; letter-spacing: .15em; }
+        .collaboration-type { color: var(--accent-cyan); font-size: .7rem; font-weight: 700; letter-spacing: .14em; }
+        .collaboration-card h4 { margin: .6rem 0 .2rem; font-size: 1.35rem; }
+        .card-meta, .card-description { color: var(--text-secondary); font-size: .85rem; }
+        .card-footer { margin-top: auto; position: relative; z-index: 1; }
+        .card-description { margin-bottom: 1rem; }
+        .collaboration-link { color: white; text-decoration: none; font-weight: 600; font-size: .9rem; }
+        .collaboration-link i { color: var(--accent-cyan); margin: 0 .35rem; }
+        .collaboration-link:hover { color: var(--accent-cyan); }
+        .creator-card { min-height: 210px; }
+        .creator-icon { color: var(--accent-cyan); font-size: 2.1rem; margin-bottom: 1.25rem; }
+        .creator-card .collaboration-link { margin-top: auto; position: relative; z-index: 1; }
+        .more-work-link { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .15rem; max-width: 680px; margin: 4.5rem auto 0; padding: 1.35rem 1.6rem; color: white; text-decoration: none; border: 1px solid rgba(0,242,234,.3); border-radius: 16px; background: linear-gradient(100deg, rgba(0,242,234,.12), rgba(67,97,238,.13)); transition: transform .25s ease, border-color .25s ease; }
+        .more-work-link:hover { transform: translateY(-4px); border-color: var(--accent-cyan); }
+        .more-work-link small { color: var(--text-secondary); }
+        .more-work-link strong { font-size: 1rem; }
+        .more-work-link > i { grid-row: 1 / span 2; grid-column: 2; color: var(--accent-cyan); }
+
         /* Software & Tools - 3D Section */
         .software-grid {
             display: grid;
@@ -702,80 +760,27 @@
             <div class="section-title">
                 <p
                     style="color: var(--accent-cyan); letter-spacing: 0.3em; margin-bottom: 1rem; text-transform: uppercase;">
-                    Showcase</p>
-                <h2>Featured <span class="text-gradient">Projects</span></h2>
+                    Collaborations</p>
+                <h2>Brands &amp; <span class="text-gradient">Creators</span></h2>
+                <p style="color: var(--text-secondary); margin-top: 1rem;">Brands and creators I have partnered with for high-performing video edits.</p>
             </div>
 
-            <div class="portfolio-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <a href="https://youtube.com/shorts/iJRsvnwoRGY?si=FjGBIytFGh1uPi9u" target="_blank">
-                        <div class="thumbnail-container">
-                            <img src="https://img.youtube.com/vi/iJRsvnwoRGY/maxresdefault.jpg" alt="Engineering Facts">
-                            <div class="play-overlay">
-                                <div class="play-btn"><i class="fas fa-play"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="project-content">
-                        <span class="project-category">YouTube Shorts</span>
-                        <h3 class="project-title">Engineering Facts - The Future</h3>
-                        <p
-                            style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-style: italic; opacity: 0.7;">
-                            20+ Edits</p>
-                        <a href="https://youtube.com/shorts/iJRsvnwoRGY?si=FjGBIytFGh1uPi9u" target="_blank"
-                            class="watch-link">
-                            Watch my work <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <a href="https://youtube.com/shorts/K2kkXTa2iUY?si=7q2ZIWzzIMvFLw0Q" target="_blank">
-                        <div class="thumbnail-container">
-                            <img src="https://img.youtube.com/vi/K2kkXTa2iUY/maxresdefault.jpg" alt="Buying Facts">
-                            <div class="play-overlay">
-                                <div class="play-btn"><i class="fas fa-play"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="project-content">
-                        <span class="project-category">YouTube Shorts</span>
-                        <h3 class="project-title">Buying Facts - Retention Mix</h3>
-                        <p
-                            style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-style: italic; opacity: 0.7;">
-                            20+ Edits</p>
-                        <a href="https://youtube.com/shorts/K2kkXTa2iUY?si=7q2ZIWzzIMvFLw0Q" target="_blank"
-                            class="watch-link">
-                            Watch my work <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <a href="https://www.instagram.com/hairastissuepaperproducts/reel/DUsrfM0gK0X/" target="_blank">
-                        <div class="thumbnail-container">
-                            <img src="public/images/hairas-thumbnail.png" alt="Hairas Promo">
-                            <div class="play-overlay">
-                                <div class="play-btn"><i class="fas fa-play"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="project-content">
-                        <span class="project-category">Brand Identity</span>
-                        <h3 class="project-title">Hairas - Promotional Reel</h3>
-                        <p
-                            style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-style: italic; opacity: 0.7;">
-                            OnGoing Edits</p>
-                        <a href="https://www.instagram.com/hairastissuepaperproducts/reel/DUsrfM0gK0X/" target="_blank"
-                            class="watch-link">
-                            Watch my work <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="collaboration-heading"><span>01</span><h3>Brands</h3></div>
+            <div class="collaboration-grid">
+                <article class="collaboration-card"><span class="card-number">01</span><p class="collaboration-type">BRAND COLLABORATION</p><h4>Ponvel Coco</h4><p class="card-meta">Canada</p><div class="card-footer"><p class="card-description">Lead generation ad edit</p><a class="collaboration-link" href="https://drive.google.com/file/d/1lAVy3DOb1USj26-OyQtFoLQ7-uQWKnBr/view?usp=sharing" target="_blank" rel="noopener noreferrer">View edit <i class="fab fa-google-drive"></i><i class="fas fa-arrow-right"></i></a></div></article>
+                <article class="collaboration-card"><span class="card-number">02</span><p class="collaboration-type">BRAND COLLABORATION</p><h4>Onstage</h4><p class="card-meta">Germany</p><div class="card-footer"><p class="card-description">Test edit</p><a class="collaboration-link" href="https://drive.google.com/file/d/10No1hYxX8iJGft_uc8ZdcIW3xOOCy_Jo/view?usp=sharing" target="_blank" rel="noopener noreferrer">View edit <i class="fab fa-google-drive"></i><i class="fas fa-arrow-right"></i></a></div></article>
+                <article class="collaboration-card"><span class="card-number">03</span><p class="collaboration-type">BRAND COLLABORATION</p><h4>Bayleaf</h4><p class="card-meta">United States</p><div class="card-footer"><p class="card-description">Lead generation ad edit</p><a class="collaboration-link" href="https://drive.google.com/file/d/1K0lNvG7IqRoKJIief8xnp3Ki6dKOet32/view?usp=sharing" target="_blank" rel="noopener noreferrer">View edit <i class="fab fa-google-drive"></i><i class="fas fa-arrow-right"></i></a></div></article>
+                <article class="collaboration-card"><span class="card-number">04</span><p class="collaboration-type">BRAND COLLABORATION</p><h4>The Design Code TVL</h4><div class="card-footer"><p class="card-description">Lead generation ad edit</p><a class="collaboration-link" href="https://drive.google.com/file/d/15AowGlAgD6tzvSsBEbJpxsHl1DCm8XTv/view?usp=sharing" target="_blank" rel="noopener noreferrer">View edit <i class="fab fa-google-drive"></i><i class="fas fa-arrow-right"></i></a></div></article>
+                <article class="collaboration-card"><span class="card-number">05</span><p class="collaboration-type">BRAND COLLABORATION</p><h4>Ambal</h4><div class="card-footer"><p class="card-description">Lead generation ad edit</p><a class="collaboration-link" href="https://drive.google.com/file/d/14ZvytjT1soJpSNsYnwiFAUZOVM1VIshB/view?usp=sharing" target="_blank" rel="noopener noreferrer">View edit <i class="fab fa-google-drive"></i><i class="fas fa-arrow-right"></i></a></div></article>
             </div>
+
+            <div class="collaboration-heading"><span>02</span><h3>Creators</h3></div>
+            <div class="collaboration-grid creator-grid">
+                <article class="collaboration-card creator-card"><i class="fab fa-instagram creator-icon"></i><p class="collaboration-type">CONTENT CREATOR</p><h4>Doctor Sheeba</h4><p class="card-meta">Instagram</p><a class="collaboration-link" href="https://www.instagram.com/drsheeba_dental_diary?utm_source=ig_web_button_share_sheet&amp;dlrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Visit Instagram <i class="fab fa-instagram"></i><i class="fas fa-arrow-right"></i></a></article>
+                <article class="collaboration-card creator-card"><i class="fab fa-youtube creator-icon"></i><p class="collaboration-type">CONTENT CREATOR</p><h4>Engineering Facts</h4><p class="card-meta">YouTube</p><a class="collaboration-link" href="https://www.youtube.com/@engineeringfacts" target="_blank" rel="noopener noreferrer">Visit YouTube <i class="fab fa-youtube"></i><i class="fas fa-arrow-right"></i></a></article>
+            </div>
+
+            <a class="more-work-link" href="https://drive.google.com/drive/folders/1iv0cy--BnEZQ5z8IbsHSFnUJWjYVLkox?usp=sharing" target="_blank" rel="noopener noreferrer"><small>Want to see more?</small><strong>Explore my complete edit library</strong><i class="fas fa-arrow-right"></i></a>
 
         </div>
     </section>
@@ -849,8 +854,8 @@
     <section id="contact" class="section-padding container">
         <div class="contact-sec">
             <div class="section-title">
-                <h2>Launch Your <span class="text-gradient">Project</span></h2>
-                <p style="color: var(--text-secondary);">Ready for high-end results? Let's talk.</p>
+                <h2>Want To Edit Your <span class="text-gradient">Videos</span></h2>
+                <p style="color: var(--text-secondary);">For Your Brand Promotions, Ad Running, YT & More. Please Contact Me</p>
             </div>
 
             <div class="contact-info">
@@ -894,7 +899,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Mohammed Safiq Nishar. All Rights Reserved.</p>
-            <span class="copyright-text">Website Build By Nis6 Tech. <br> For more info visit this website <a
+            <span class="copyright-text">Website Build By Nis6 Tech. <br> For more info visit this website -> <a
                     href="https://nis6tech-ai.github.io/Nis6Tech/index.html">Nis6 Tech</a></span>
         </div>
     </footer>
