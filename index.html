@@ -359,6 +359,43 @@
             font-style: italic;
         }
 
+        /* Client results */
+        .results-section {
+            background: linear-gradient(135deg, #071115 0%, var(--bg-primary) 55%, #0d0e19 100%);
+        }
+
+        .results-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .results-copy p:last-child {
+            color: var(--text-secondary);
+            font-size: 1.08rem;
+            max-width: 34rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .result-card {
+            min-height: 235px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 242, 234, 0.22);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(0, 242, 234, 0.1), rgba(67, 97, 238, 0.06));
+        }
+
+        .result-card > i { color: var(--accent-cyan); font-size: 1.55rem; margin-bottom: 1.4rem; }
+        .result-card strong { display: block; font-family: var(--font-heading); font-size: clamp(2.75rem, 5vw, 4rem); line-height: 1; margin-bottom: 0.55rem; }
+        .result-card h3 { font-size: 1rem; margin-bottom: 0.7rem; }
+        .result-card p { color: var(--text-secondary); font-size: 0.84rem; line-height: 1.5; }
+
         /* Collaborations */
         .collaboration-heading {
             display: flex;
@@ -700,6 +737,15 @@
             color: white;
             font-weight: 600;
         }
+
+        @media (max-width: 900px) {
+            .results-layout { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        @media (max-width: 480px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .result-card { min-height: 200px; }
+        }
     </style>
 </head>
 
@@ -782,6 +828,30 @@
 
             <a class="more-work-link" href="https://drive.google.com/drive/folders/1iv0cy--BnEZQ5z8IbsHSFnUJWjYVLkox?usp=sharing" target="_blank" rel="noopener noreferrer"><small>Want to see more?</small><strong>Explore my complete edit library</strong><i class="fas fa-arrow-right"></i></a>
 
+        </div>
+    </section>
+
+    <section id="results" class="section-padding results-section">
+        <div class="container results-layout">
+            <div class="results-copy">
+                <p style="color: var(--accent-cyan); letter-spacing: 0.3em; margin-bottom: 1rem; text-transform: uppercase;">Results That Matter</p>
+                <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1.5rem;">Creative built to <span class="text-gradient">convert.</span></h2>
+                <p>I have generated 100+ leads and driven 20+ conversions for clients through high-performing ad creative.</p>
+            </div>
+            <div class="results-grid">
+                <article class="result-card">
+                    <i class="fas fa-bullseye" aria-hidden="true"></i>
+                    <strong>100+</strong>
+                    <h3>Leads generated</h3>
+                    <p>Qualified opportunities created through performance-focused ad creative.</p>
+                </article>
+                <article class="result-card">
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    <strong>20+</strong>
+                    <h3>Client conversions</h3>
+                    <p>Leads turned into measurable client outcomes through ads.</p>
+                </article>
+            </div>
         </div>
     </section>
 
